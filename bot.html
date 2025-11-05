@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telegram Casino Bot | Igor Dev</title>
+  <style>
+    :root {
+      --accent1: #5b4bff;
+      --accent2: #00e6ff;
+      --text: #eaeaea;
+      --shadow: 0 0 25px #5b4bff, 0 0 45px #00e6ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(
+        270deg,
+        #0c0011 30%,         /* переход в синий */
+        #2c0142 60%,         /* глубокий фиолетовый центр */
+        #120012 100%         /* чёрный слева */
+      );
+      background-attachment: fixed;
+      background-size: 200% 200%;
+      animation: neonFlow 14s ease-in-out infinite;
+    }
+
+    @keyframes neonFlow {
+      0%, 100% { background-position: right; }
+      50% { background-position: left; }
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: var(--shadow);
+    }
+
+    header h1 { font-size: 48px; letter-spacing: 2px; }
+    header p  { margin-top: 10px; font-size: 18px; color: #ccc; }
+
+    main {
+      max-width: 950px;
+      margin: 50px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .block {
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      margin-bottom: 35px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      transition: 0.3s;
+    }
+    .block:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent2);
+    }
+
+    h2 {
+      color: var(--accent2);
+      margin-bottom: 15px;
+      font-size: 26px;
+    }
+    p  { color: #bdbdbd; font-size: 16px; line-height: 1.6; }
+
+    ul { list-style: none; padding: 0; margin-top: 15px; }
+    li { margin-bottom: 10px; color: #ccc; font-size: 16px; }
+    li::before { content: "💠 "; color: var(--accent2); }
+
+    /* Кнопка "Назад" */
+    .back-btn {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #000;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(108, 99, 255, 0.6), 0 0 40px rgba(0, 230, 255, 0.5);
+      transition: 0.35s ease;
+    }
+    .back-btn:hover {
+      transform: scale(1.06);
+      filter: brightness(1.15);
+      box-shadow: 0 0 30px #6c63ff, 0 0 60px #00e6ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      font-size: 14px;
+      color: #aaa;
+      border-top: 1px solid #222;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Telegram Casino Bot</h1>
+    <p>Азарт. Баланс. Красивая логика.</p>
+  </header>
+
+  <main>
+    <div class="block">
+      <h2>🎮 Описание проекта</h2>
+      <p>
+        <strong>Casino Bot</strong> — интерактивный Telegram-бот, создающий атмосферу казино прямо в чате.
+        Внутренняя валюта — <strong>Crystal</strong> 💎. Пользователи делают ставки, вращают рулетку
+        и открывают боксы с шансом на редкий выигрыш. Акцент на честном рандоме, скорости и удобстве.
+      </p>
+    </div>
+
+    <div class="block">
+      <h2>🧠 Возможности</h2>
+      <ul>
+        <li>Рулетка с динамическими коэффициентами</li>
+        <li>Боксы с шансами выпадения и редкими призами</li>
+        <li>Баланс Crystal, мгновенные выплаты и история операций</li>
+        <li>Профиль игрока, статистика и лидерборд</li>
+        <li>Ежедневные бонусы и анти-фрод проверки</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h2>⚙️ Технологии и структура</h2>
+      <ul>
+        <li>Python 3 + <strong>aiogram</strong> (Telegram Bot API)</li>
+        <li>Асинхронная обработка команд и колбэков</li>
+        <li>JSON-хранилище (или SQLite) для пользователей, баланса и логов</li>
+        <li>Модули: <em>roulette</em>, <em>boxes</em>, <em>wallet</em>, <em>profile</em></li>
+        <li>Лёгкая расширяемость — добавление новых игр без ломки ядра</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h2>🚀 Особенности</h2>
+      <p>
+        Плавная игровая петля, честные алгоритмы случайности, минималистичный UX.
+        Проект легко масштабируется: магазин скинов, кланы, турниры, реферальная система — всё это можно
+        подключить отдельными модулями.
+      </p>
+    </div>
+
+    <!-- Кнопка назад -->
+    <a href="index.html" class="back-btn">⬅ Вернуться на главную</a>
+  </main>
+
+  <footer>
+   <p>© 2025 Igor Dev. создано При поддержки кофе.</p>
+     <a href="https://t.me/developer_876">Telegram</a>
+  </footer>
+</body>
+</html>

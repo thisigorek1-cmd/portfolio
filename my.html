@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Обо мне | Igor Dev</title>
+  <style>
+    :root {
+      --accent1: #6c63ff;
+      --accent2: #00ffd1;
+      --text: #eaeaea;
+      --shadow: 0 0 25px #6c63ff, 0 0 45px #00ffd1;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(
+        270deg,
+        #0c0011 30%,         /* переход в синий */
+        #2c0142 60%,         /* глубокий фиолетовый центр */
+        #120012 100%         /* чёрный слева */
+      );
+      background-attachment: fixed;
+      background-size: 200% 200%;
+      animation: neonFlow 14s ease-in-out infinite;
+    }
+
+    @keyframes neonFlow {
+      0%, 100% { background-position: right; }
+      50% { background-position: left; }
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 48px;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #ccc;
+    }
+
+    main {
+      max-width: 950px;
+      margin: 50px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .block {
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      margin-bottom: 35px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      transition: 0.3s;
+    }
+
+    .block:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent2);
+    }
+
+    h2 {
+      color: var(--accent2);
+      margin-bottom: 15px;
+      font-size: 26px;
+    }
+
+    p {
+      color: #bdbdbd;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: #ccc;
+      font-size: 16px;
+    }
+
+    li::before {
+      content: "💡 ";
+      color: var(--accent2);
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #000;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(108, 99, 255, 0.6), 0 0 40px rgba(0, 255, 209, 0.5);
+      transition: 0.35s ease;
+    }
+
+    .back-btn:hover {
+      transform: scale(1.06);
+      filter: brightness(1.15);
+      box-shadow: 0 0 30px #6c63ff, 0 0 60px #00ffd1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      font-size: 14px;
+      color: #aaa;
+      border-top: 1px solid #222;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Обо мне</h1>
+    <p>Мой путь в IT — от первых строк кода до собственного неонового мира 💫</p>
+  </header>
+
+  <main>
+    <div class="block">
+      <h2>🚀 Как всё начиналось</h2>
+      <p>
+        Моё знакомство с программированием началось с простого интереса к технологиям и дизайну.
+        Я всегда хотел создавать что-то своё — от небольших проектов до полноценного продукта, который смогут использовать люди.
+        Первым серьёзным шагом стала работа над собственным мессенджером <strong>Eliz</strong> на Flutter и Firebase.
+        Тогда я понял, что программирование — это не просто код, а искусство соединять идею, интерфейс и функциональность.
+      </p>
+    </div>
+
+    <div class="block">
+      <h2>🧠 Обучение и рост</h2>
+      <p>
+        Я начал учиться самостоятельно — изучал HTML, CSS, JavaScript, Flutter и Python.
+        Каждый новый проект был как тренировка: я писал код, ошибался, исправлял и снова создавал.
+        Благодаря этому я не просто понял, как работает frontend и backend, но и научился мыслить как разработчик.
+      </p>
+      <p>
+        Сейчас я развиваюсь в направлении <strong>full-stack</strong> разработки и проектирую свои приложения с нуля —
+        от визуала и UX до архитектуры и серверной логики.
+      </p>
+    </div>
+
+    <div class="block">
+      <h2>💻 Что я умею</h2>
+      <ul>
+        <li>Frontend: HTML, CSS, JavaScript, Flutter, React (на стадии изучения)</li>
+        <li>Backend: Python (FastAPI), Firebase, JSON-хранилища</li>
+        <li>Дизайн и UX — создаю неоновые, современные интерфейсы</li>
+        <li>Работа с Telegram API и создание интерактивных ботов</li>
+        <li>Основы баз данных, логика взаимодействия и структура API</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h2>🔥 Мои цели</h2>
+      <p>
+        Я хочу развиваться в IT не просто как разработчик, а как создатель продуктов.
+        Моя цель — построить экосистему <strong>Eliz</strong>: мессенджер, музыка, кино, игры.
+        Каждое приложение — часть единого неонового пространства, где технологии и стиль идут вместе.
+      </p>
+      <p>
+        Я верю, что всё начинается с идеи и настойчивости. И однажды мой проект станет тем, что вдохновит других начать свой путь.
+      </p>
+    </div>
+
+    <a href="index.html" class="back-btn">⬅ Вернуться на главную</a>
+  </main>
+
+  <footer>
+   <p>© 2025 Igor Dev. создано При поддержки кофе.</p>
+   <a href="https://t.me/developer_876">Telegram</a>
+  </footer>
+</body>
+</html>

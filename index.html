@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Igor Dev | Full-Stack Developer</title>
+  <style>
+    :root {
+      --bg: #0e0e10;
+      --accent1: #6c63ff;
+      --accent2: #00ffd1;
+      --text: #eaeaea;
+      --shadow: 0 0 20px #6c63ff, 0 0 40px #00ffd1;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* 🔥 Только фон заменён */
+    body {
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(
+        270deg,
+        #0c0011 30%,         /* переход в синий */
+        #2c0142 60%,         /* глубокий фиолетовый центр */
+        #120012 100%         /* чёрный слева */
+      );
+      background-attachment: fixed;
+      background-size: 200% 200%;
+      animation: neonFlow 14s ease-in-out infinite;
+    }
+
+    @keyframes neonFlow {
+      0%, 100% { background-position: right; }
+      50% { background-position: left; }
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: var(--shadow);
+      animation: hue 10s infinite linear;
+    }
+
+    header h1 { font-size: 48px; letter-spacing: 2px; }
+    header p { margin-top: 10px; font-size: 20px; color: #ccc; }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      color: var(--accent2);
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover { color: var(--accent1); text-shadow: 0 0 10px var(--accent1); }
+
+    main {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    main h2 {
+      color:#eaeaea
+    }
+
+    main p {
+      color: #eaeaea;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  transition: 0.4 ease;
+  border: 1px solid rgba(255,255,255,0.1)
+}
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent2);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 { color: var(--accent2); margin-bottom: 10px; }
+    .card p { color: #bbb; font-size: 15px; line-height: 1.5; }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      font-size: 14px;
+      color: #aaa;
+      border-top: 1px solid #222;
+      margin-top: 60px;
+      animation: fadeUp 1.2s ease-out forwards;
+    }
+
+    footer a {
+      color: #00fff2;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      margin: 0 5px;
+    }
+
+    footer a:hover {
+      color: #fff;
+      text-shadow: 0 0 8px #00fff2;
+    }
+
+    div a {
+      color: var(--accent2);
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Igor / Dev</h1>
+    <p>Full-Stack Developer😎</p>
+  </header>
+
+<main>
+  <h2>🚀 Мои проекты</h2>
+  <p>Вот примеры моих последних работ — современные, адаптивные и быстрые.</p>
+  <p>И немного обо мне</p>
+
+  <div class="projects">
+    
+ <!-- Eliz Messenger -->
+<div class="card" onclick="window.location.href='eliz.html'" style="cursor: pointer;">
+  <img src="images/photo_2025-11-01_11-47-09.jpg" alt="eliz" />
+  <h3>Eliz Messenger</h3>
+  <p>
+    Мой неоновый мессенджер на Flutter + Firebase — с анимацией, приватностью и современным дизайном.
+    Узнай, как создавался проект с нуля.
+  </p>
+</div>
+
+<!-- Telegram Bot -->
+<div class="card" onclick="window.location.href='bot.html'" style="cursor: pointer;">
+  <img src="images/OIP (1).webp" alt="bot" />
+  <h3>Мой Telegram Бот</h3>
+  <p>Интерактивный бот с элементами казино и внутриигровой валютой Crystal 💎.</p>
+</div>
+
+<!-- Обо мне -->
+<div class="card" onclick="window.location.href='my.html'" style="cursor: pointer;">
+  <img src="images/OIP.webp" alt="aboutme" />
+  <h3>Обо мне</h3>
+  <p>Мой путь от первых строк кода до создания Eliz — история настойчивости, креатива и неона.</p>
+</div>
+</main>
+
+  <footer>
+   <p>© 2025 Igor Dev. создано При поддержки кофе.</p>
+    <p><a href="#">GitHub</a> • <a href="https://t.me/developer_876">Telegram</a>
+  </footer>
+</body>
+</html>
