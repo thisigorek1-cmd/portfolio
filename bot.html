@@ -2,166 +2,182 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Telegram Casino Bot | Igor Dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eliz Bot Game — Telegram Bot | Igor Dev</title>
   <style>
-    :root {
-      --accent1: #5b4bff;
-      --accent2: #00e6ff;
-      --text: #eaeaea;
-      --shadow: 0 0 25px #5b4bff, 0 0 45px #00e6ff;
+    :root{
+      --accent1:#5b4bff;
+      --accent2:#00e6ff;
+      --text:#eaeaea;
+      --card:#ffffff0d;
+      --border:#ffffff1a;
+      --line:#222;
+      --shadow:0 0 25px #5b4bff,0 0 45px #00e6ff;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      height: 100vh;
-      margin: 0;
-      background: linear-gradient(
-        270deg,
-        #0c0011 30%,         /* переход в синий */
-        #2c0142 60%,         /* глубокий фиолетовый центр */
-        #120012 100%         /* чёрный слева */
-      );
-      background-attachment: fixed;
-      background-size: 200% 200%;
-      animation: neonFlow 14s ease-in-out infinite;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      color:var(--text);
+      background:linear-gradient(270deg,#0c0011 30%,#2c0142 60%,#120012 100%);
+      background-size:200% 200%;
+      animation:bg 14s ease-in-out infinite;
+      font-family:'Segoe UI',Roboto,sans-serif;
     }
+    @keyframes bg{0%,100%{background-position:right}50%{background-position:left}}
 
-    @keyframes neonFlow {
-      0%, 100% { background-position: right; }
-      50% { background-position: left; }
+    .top-banner{
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      padding:14px 25px;
+      text-align:center;
+      font-weight:700;
+      color:#000;
+      font-size:18px;
+      border-bottom:1px solid #111;
+      box-shadow:0 0 25px rgba(0,230,255,.5),0 0 45px rgba(91,75,255,.4);
+      transition:.3s;
     }
+    .top-banner:hover{filter:brightness(1.1);transform:scale(1.02);}
+    .top-banner a{color:#000;text-decoration:none;}
 
-    header {
-      text-align: center;
-      padding: 80px 20px 40px;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: var(--shadow);
+    header{text-align:center;padding:70px 20px 40px;}
+    header h1{
+      margin:0;
+      font-size:48px;
+      letter-spacing:2px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
     }
+    header p{margin-top:12px;color:#ccc;font-size:18px;}
 
-    header h1 { font-size: 48px; letter-spacing: 2px; }
-    header p  { margin-top: 10px; font-size: 18px; color: #ccc; }
+    main{max-width:980px;margin:50px auto;padding:0 20px;}
+    .block{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:28px;
+      margin-bottom:32px;
+      box-shadow:0 0 25px rgba(0,0,0,.6);
+      transition:.3s;
+    }
+    .block:hover{transform:translateY(-4px);border-color:var(--accent2);box-shadow:var(--shadow);}
+    h2{margin:0 0 16px;font-size:26px;color:var(--accent2);}
+    p{color:#d9d9d9;line-height:1.65;font-size:16px;margin:0 0 14px;}
+    ul{margin:0;padding-left:18px;}
+    li{margin:8px 0;color:#ccc;font-size:16px;}
 
-    main {
-      max-width: 950px;
-      margin: 50px auto;
-      padding: 0 20px;
-      text-align: center;
+    .btn{
+      display:inline-block;
+      margin-top:26px;
+      padding:14px 26px;
+      border-radius:10px;
+      font-weight:700;
+      text-decoration:none;
+      color:#000;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      box-shadow:0 0 20px rgba(108,199,255,.6),0 0 40px rgba(0,230,255,.5);
+      transition:.35s ease;
     }
+    .btn:hover{transform:scale(1.06);filter:brightness(1.08);box-shadow:0 0 30px #6c63ff,0 0 60px #00e6ff;}
+    .back{display:inline-block;margin-top:10px;color:#9fdfff;text-decoration:none;}
+    .back:hover{text-decoration:underline;}
 
-    .block {
-      background: rgba(255,255,255,0.05);
-      padding: 30px;
-      margin-bottom: 35px;
-      border-radius: 15px;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
-      transition: 0.3s;
-    }
-    .block:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow);
-      border-color: var(--accent2);
-    }
-
-    h2 {
-      color: var(--accent2);
-      margin-bottom: 15px;
-      font-size: 26px;
-    }
-    p  { color: #bdbdbd; font-size: 16px; line-height: 1.6; }
-
-    ul { list-style: none; padding: 0; margin-top: 15px; }
-    li { margin-bottom: 10px; color: #ccc; font-size: 16px; }
-    li::before { content: "💠 "; color: var(--accent2); }
-
-    /* Кнопка "Назад" */
-    .back-btn {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 14px 28px;
-      border-radius: 10px;
-      font-weight: bold;
-      color: #000;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      text-decoration: none;
-      box-shadow: 0 0 20px rgba(108, 99, 255, 0.6), 0 0 40px rgba(0, 230, 255, 0.5);
-      transition: 0.35s ease;
-    }
-    .back-btn:hover {
-      transform: scale(1.06);
-      filter: brightness(1.15);
-      box-shadow: 0 0 30px #6c63ff, 0 0 60px #00e6ff;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      font-size: 14px;
-      color: #aaa;
-      border-top: 1px solid #222;
-      margin-top: 60px;
-    }
+    footer{text-align:center;padding:28px 20px 60px;font-size:14px;color:#aaa;border-top:1px solid var(--line);margin-top:50px;}
+    footer a{color:#9fdfff;text-decoration:none;}
+    footer a:hover{text-decoration:underline;}
   </style>
 </head>
 <body>
+
+  <!-- Верхняя ссылка -->
+  <div class="top-banner">
+    🔗 <a href="https://t.me/Elizgame_bot" target="_blank">@Elizgame_bot</a>
+  </div>
+
   <header>
-    <h1>Telegram Casino Bot</h1>
-    <p>Азарт. Баланс. Красивая логика.</p>
+    <h1>Eliz Bot Game</h1>
+    <p>Игровой Telegram-бот с валютой <strong>Coins</strong>. Создан на Python + aiogram.</p>
   </header>
 
   <main>
+
     <div class="block">
-      <h2>🎮 Описание проекта</h2>
-      <p>
-        <strong>Casino Bot</strong> — интерактивный Telegram-бот, создающий атмосферу казино прямо в чате.
-        Внутренняя валюта — <strong>Crystal</strong> 💎. Пользователи делают ставки, вращают рулетку
-        и открывают боксы с шансом на редкий выигрыш. Акцент на честном рандоме, скорости и удобстве.
-      </p>
+      <h2>🎰 О проекте</h2>
+      <p><strong>Eliz Bot Game</strong> — это офлайн-казино в виде Telegram-бота, где каждый игрок может испытать удачу, заработать монеты <strong>Coins</strong> и соревноваться с другими. Всё реализовано с честной логикой и красивыми анимациями внутри чата.</p>
+      <ul>
+        <li>Режим рулетки с динамическими шансами и коэффициентами</li>
+        <li>Основная валюта — <strong>Coins</strong></li>
+        <li>Оффлайн-казино (ставки и раунды не зависят от интернета)</li>
+        <li>Поддержка игр в личке и в групповых чатах</li>
+        <li>Система профилей и истории побед</li>
+      </ul>
+      <a class="btn" href="https://t.me/developer_876" target="_blank">Связаться с разработчиком</a>
+      <br><a class="back" href="index.html">← Вернуться на главную</a>
     </div>
 
     <div class="block">
-      <h2>🧠 Возможности</h2>
+      <h2>💎 Основные возможности</h2>
       <ul>
-        <li>Рулетка с динамическими коэффициентами</li>
-        <li>Боксы с шансами выпадения и редкими призами</li>
-        <li>Баланс Crystal, мгновенные выплаты и история операций</li>
-        <li>Профиль игрока, статистика и лидерборд</li>
-        <li>Ежедневные бонусы и анти-фрод проверки</li>
+        <li>🎡 <strong>Рулетка</strong> — делай ставку и испытай удачу в офлайн-казино</li>
+        <li>💰 <strong>Бонус</strong> — раз в 24 часа бот выдаёт бесплатные Coins</li>
+        <li>🍀 <strong>Испытай удачу</strong> — доступно каждые 5 часов</li>
+        <li>👤 <strong>Профиль</strong> — показывает твой ник, баланс и статистику</li>
+        <li>🏆 <strong>Топ игроков</strong> — ежедневный рейтинг; чем выше место, тем больше приз</li>
+        <li>📘 <strong>Помощь</strong> — подробное руководство по всем командам и функциям</li>
+        <li>🤝 <strong>Игра в чатах</strong> — можно добавить бота в группу и играть с друзьями</li>
       </ul>
     </div>
 
     <div class="block">
-      <h2>⚙️ Технологии и структура</h2>
+      <h2>⚙️ Технологии</h2>
       <ul>
-        <li>Python 3 + <strong>aiogram</strong> (Telegram Bot API)</li>
-        <li>Асинхронная обработка команд и колбэков</li>
-        <li>JSON-хранилище (или SQLite) для пользователей, баланса и логов</li>
-        <li>Модули: <em>roulette</em>, <em>boxes</em>, <em>wallet</em>, <em>profile</em></li>
-        <li>Лёгкая расширяемость — добавление новых игр без ломки ядра</li>
+        <li>Язык: Python 3</li>
+        <li>Фреймворк: <strong>aiogram</strong> (Telegram Bot API)</li>
+        <li>Асинхронная логика: asyncio, FSM (состояния)</li>
+        <li>Хранилище данных: JSON / SQLite</li>
+        <li>Модули: баланс, бонус, удача, топ, профиль, помощь, казино</li>
+        <li>Честные алгоритмы рандома и антифрод-проверка</li>
+        <li>Оптимизация под большие чаты и высокую нагрузку</li>
       </ul>
     </div>
 
     <div class="block">
-      <h2>🚀 Особенности</h2>
-      <p>
-        Плавная игровая петля, честные алгоритмы случайности, минималистичный UX.
-        Проект легко масштабируется: магазин скинов, кланы, турниры, реферальная система — всё это можно
-        подключить отдельными модулями.
-      </p>
+      <h2>🚀 Фишки и детали</h2>
+      <ul>
+        <li>Красивый дизайн ответов, иконки, эмодзи и плавные анимации</li>
+        <li>Гибкая система команд и inline-меню</li>
+        <li>Автоматическая выдача наград и авто-топ каждые 24 часа</li>
+        <li>Отдельные функции для админов: статистика, чистка, награды</li>
+        <li>Легко расширяется — можно добавлять новые мини-игры</li>
+      </ul>
     </div>
 
-    <!-- Кнопка назад -->
-    <a href="index.html" class="back-btn">⬅ Вернуться на главную</a>
+    <div class="block">
+      <h2>🧠 Как это работает</h2>
+      <p>Eliz Bot Game использует асинхронную архитектуру: каждое действие игрока — отдельная операция без лагов. Баланс и профиль сохраняются локально, а топ обновляется автоматически по времени. Благодаря офлайн-модели бот работает стабильно даже при высокой активности.</p>
+    </div>
+
+    <div class="block">
+      <h2>🛠️ Развивается</h2>
+      <ul>
+        <li>Добавление мини-игр: “Dice”, “Crash”, “Мины”</li>
+        <li>Еженедельные ивенты и сезонные таблицы</li>
+        <li>Мультичатовые турниры с автоматическим распределением призов</li>
+        <li>Веб-панель управления и статистика</li>
+      </ul>
+    </div>
+
   </main>
 
   <footer>
-   <p>© 2025 Igor Dev. создано При поддержки кофе.</p>
-     <a href="https://t.me/developer_876">Telegram</a>
+    <p>© 2025 Igor Dev. Создано при поддержке кофе.</p>
+    <p>
+      <a href="https://github.com/thisigorek1-cmd" target="_blank">GitHub</a> • 
+      <a href="https://t.me/developer_876" target="_blank">Telegram</a> • 
+      <a href="https://t.me/Elizgame_bot" target="_blank">@Elizgame_bot</a>
+    </p>
   </footer>
+
 </body>
 </html>
